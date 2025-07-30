@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "description": "Portfólio do Diego Fernandes — desenvolvedor full-stack (Java/Spring, Node/TypeScript, PHP/Laravel, Next.js) com projetos em produção."
+  },
+  "nav": {
+    "projects": "Projetos",
+    "about": "Sobre"
+  },
+  "hero": {
+    "name": "Diego",
+    "tagline": "Full-stack dev. Back-end Java/Spring, Node/TS, PHP/Laravel. front React/Next.js.",
+    "viewProjects": "Ver projetos",
+    "cta": "Entrar em contato"
+  },
+  "featured": {
+    "title": "Projetos em destaque",
+    "viewAll": "Ver todos os projetos",
+    "empty": "Nenhum projeto em destaque ainda."
+  },
+  "contact": {
+    "title": "Contato",
+    "description": "Aberto a oportunidades.",
+    "email": "Enviar e-mail"
+  },
+  "footer": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "E-mail",
+    "resume": "Currículo (PDF)"
+  },
+  "themeToggle": "Alternar tema",
+  "localeToggle": "Idioma",
+  "projects": {
+    "title": "Projetos",
+    "empty": "Nenhum projeto publicado ainda.",
+    "mediaHint": "Full-screen para maior qualidade.",
+    "github": "GitHub",
+    "githubFront": "GitHub · Front",
+    "githubApi": "GitHub · API",
+    "readme": "README",
+    "readmeFront": "README · Front",
+    "readmeApi": "README · API",
+    "demo": "Ver site",
+    "contextTitle": "Contexto",
+    "decisionsTitle": "Decisões técnicas",
+    "dockerTitle": "Rodar localmente",
+    "dockerDesc": "Necessário: Docker e Git instalados.",
+    "viewAllOnGithub": "Ver todos no GitHub",
+    "reposCount": "50+ repositórios",
+    "backToProjects": "← Voltar para projetos"
+  },
+  "about": {
+    "title": "Sobre",
+    "intro": "Desenvolvedor full-stack com foco em back-end. Programo desde 2020 e estou no último semestre de Ciência da Computação. Trabalho com APIs em Java/Spring Boot, Node/TypeScript e PHP e interfaces em React/Next.js, priorizando arquitetura, performance e boas práticas. Meus projetos rodam em produção — APIs conteinerizadas em VPS, fronts na Vercel, com deploy, banco e domínio próprios.",
+    "factsTitle": "Resumo",
+    "facts": [
+      { "label": "Formação", "value": "Ciência da Computação — Cruzeiro do Sul Virtual (último semestre, conclusão em 2026)" },
+      { "label": "Localização", "value": "São José do Rio Preto/SP" },
+      { "label": "Disponibilidade", "value": "Remoto, híbrido ou presencial · aberto a realocar" },
+      { "label": "Inglês", "value": "Avançado" }
+    ],
+    "stackTitle": "Stack atual",
+    "stack": [
+      "Back-end: Java + Spring Boot, Node.js + TypeScript, PHP + Laravel",
+      "Front-end: Next.js, React, Tailwind",
+      "Banco: PostgreSQL, MySQL, MongoDB",
+      "Testes: JUnit + Mockito (Spring), Vitest + Supertest (Node), Pest (Laravel) — unit e integração",
+      "Infra: AWS, VPS (Hetzner), Linux, Docker, Vercel"
+    ],
+    "interestsTitle": "O que estou estudando",
+    "interests": [
+      "Otimização de banco — índices e análise de query",
+      "CI/CD com GitHub Actions",
+      "Arquitetura limpa, DDD e SOLID",
+      "GraphQL como alternativa a REST"
+    ],
+    "ctaTitle": "Entre em contato"
+  }
+}
