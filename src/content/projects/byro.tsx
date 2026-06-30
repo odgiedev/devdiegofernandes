@@ -6,15 +6,8 @@ const content: ProjectContentFactory = (locale) => {
       context: (
         <>
           <p>
-            Byro é um e-commerce de eBooks em operação em{" "}
-            <a
-              href="https://e-byro.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              e-byro.com
-            </a>
-            . A plataforma cobre cadastro, autenticação por token, catálogo,
+            Byro é um e-commerce de eBooks.
+            A plataforma cobre cadastro, autenticação por token, catálogo,
             carrinho, checkout via Mercado Pago e entrega do PDF por URL
             assinada.
           </p>
@@ -27,8 +20,7 @@ const content: ProjectContentFactory = (locale) => {
           </p>
           <p>
             O front-end implementa integração com gateway (webhook, retorno e
-            os três estados do Mercado Pago), estado persistente no cliente, e
-            empacotamento Docker com fallback de SPA configurado no Nginx.
+            os três estados do Mercado Pago).
           </p>
         </>
       ),
@@ -38,21 +30,24 @@ const content: ProjectContentFactory = (locale) => {
           body: (
             <>
               <p>
-                Mercado Pago assina webhooks via HMAC-SHA256 sobre um manifest
-                do tipo{" "}
+                O Mercado Pago assina cada webhook com HMAC-SHA256 sobre um
+                manifest no formato{" "}
                 <code>id:{`{paymentId}`};request-id:{`{xRequestId}`};ts:{`{ts}`};</code>
-                . O <code>id</code> precisa vir da query string crua — o{" "}
-                <code>parse_str()</code> do PHP converte <code>data.id</code>{" "}
-                em <code>data_id</code> automaticamente. Parse manual do{" "}
-                <code>QUERY_STRING</code> preserva o nome do parâmetro.
+                . O <code>id</code> precisa vir da query string crua: o{" "}
+                <code>parse_str()</code> do PHP renomeia <code>data.id</code> para{" "}
+                <code>data_id</code> automaticamente, o que quebra a assinatura.
+                Parse manual do <code>QUERY_STRING</code> preserva o nome do
+                parâmetro.
               </p>
               <p>
-                O MP varia o formato do manifest entre topics e versões. A
-                validação testa 6 variações contra a assinatura recebida usando{" "}
-                <code>hash_equals</code> (comparação timing-safe). Se nenhuma
-                bater, um <code>loose_mode</code> controlado por config loga e
-                prossegue chamando a API do MP para confirmar via{" "}
-                <code>access_token</code>. Em produção, fica desligado.
+                O formato do manifest varia entre topics e versões da API. A
+                validação compara as variações possíveis com a assinatura
+                recebida usando <code>hash_equals</code> (comparação timing-safe).
+                Se nenhuma bate, um modo controlado por config registra o caso e
+                confirma o pagamento direto na API do Mercado Pago via{" "}
+                <code>access_token</code> — defesa em profundidade: o produto não
+                é liberado sem confirmação, e uma variação de formato não prevista
+                não derruba a venda.
               </p>
             </>
           ),
@@ -62,22 +57,17 @@ const content: ProjectContentFactory = (locale) => {
           body: (
             <>
               <p>
-                Streamar o PDF direto da rota autenticada acopla o download ao
-                token Sanctum e quebra se o usuário muda de aba, abre em outro
-                device ou usa download manager. A solução é URL assinada de 30
-                minutos via <code>URL::signedRoute</code>, embutindo{" "}
-                <code>ebookId</code> e <code>userEmail</code>, validada pelo
-                middleware <code>signed</code> do Laravel.
+                Servir o PDF direto de uma rota autenticada acopla o download ao
+                token do Sanctum e quebra quando o usuário troca de aba, abre em
+                outro dispositivo ou usa um gerenciador de download. A solução é
+                uma URL assinada de 30 minutos (<code>URL::signedRoute</code>),
+                que embute o <code>ebookId</code> e o e-mail do usuário e é
+                validada pelo middleware <code>signed</code> do Laravel.
               </p>
               <p>
-                Resultado: zero estado para gerenciar, expiração nativa, e nome
-                de arquivo personalizado (
-                <code>engenheiro_de_prompt_user.pdf</code>) gerado a partir do
-                email embutido na URL.{" "}
-                <code>trustProxies(at: &lsquo;*&rsquo;)</code> no{" "}
-                <code>bootstrap/app.php</code> garante que, atrás de proxy ou
-                load balancer, Laravel leia <code>X-Forwarded-*</code> e gere
-                URL com host correto.
+                Resultado: nenhum estado para gerenciar, expiração nativa e nome
+                de arquivo personalizado gerado a partir do e-mail embutido na
+                URL.
               </p>
             </>
           ),
@@ -87,19 +77,20 @@ const content: ProjectContentFactory = (locale) => {
           body: (
             <>
               <p>
+                Documentar a API em OpenAPI com{" "}
                 <code>darkaonline/l5-swagger</code> exige anotações{" "}
-                <code>#[OA\Post(...)]</code>,{" "}
-                <code>#[OA\Property(...)]</code> em cada endpoint. A informação
-                já vive no <code>routes/api.php</code>, no FormRequest e no
-                return type — duplicar em atributos gerou ~250 linhas de
-                boilerplate nos controllers.
+                <code>#[OA\Post(...)]</code> e <code>#[OA\Property(...)]</code> em
+                cada endpoint. Essa informação já vive no{" "}
+                <code>routes/api.php</code>, no FormRequest e no return type —
+                repetir tudo em atributos duplicaria a mesma definição em vários
+                lugares e deixaria a documentação fácil de desatualizar.
               </p>
               <p>
-                <code>dedoc/scramble</code> lê routes, FormRequests e return
-                types automaticamente e gera OpenAPI 3.1 sem anotação. PHPDoc
-                curto por endpoint cobre summary e <code>@response</code> para
-                status codes não-óbvios (404/409). Documentação sincronizada
-                com código, mesma UI Swagger em <code>/docs/api</code>.
+                <code>dedoc/scramble</code> lê rotas, FormRequests e return types
+                automaticamente e gera o OpenAPI 3.1 sem anotação. PHPDoc curto
+                por endpoint cobre o resumo e os status menos óbvios (404/409). A
+                documentação fica sempre sincronizada com o código, na mesma UI
+                Swagger em <code>/docs/api</code>.
               </p>
             </>
           ),
@@ -133,15 +124,8 @@ const content: ProjectContentFactory = (locale) => {
     context: (
       <>
         <p>
-          Byro is a technical eBook store running in production at{" "}
-          <a
-            href="https://e-byro.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            e-byro.com
-          </a>
-          . The platform covers signup, token auth, catalog, cart, Mercado Pago
+          Byro is a technical eBook store.
+          The platform covers signup, token auth, catalog, cart, Mercado Pago
           checkout and PDF delivery via signed URL.
         </p>
         <p>
@@ -153,10 +137,7 @@ const content: ProjectContentFactory = (locale) => {
         </p>
         <p>
           The front-end implements gateway integration (webhook, return and
-          Mercado Pago&rsquo;s three payment states), persistent client-side
-          state, and Docker packaging with SPA fallback configured in Nginx.
-          The stack is Vite, React and Tailwind, without TypeScript or
-          form/fetching libraries.
+          Mercado Pago&rsquo;s three payment states).
         </p>
       </>
     ),
@@ -180,7 +161,6 @@ const content: ProjectContentFactory = (locale) => {
               using <code>hash_equals</code> (timing-safe comparison). If none
               match, a config-driven <code>loose_mode</code> logs and proceeds
               by calling the MP API to confirm via <code>access_token</code>.
-              Off in production.
             </p>
           </>
         ),
@@ -199,13 +179,8 @@ const content: ProjectContentFactory = (locale) => {
               <code>signed</code> middleware.
             </p>
             <p>
-              Result: zero state to manage, native expiration, and personalized
-              filename (<code>engenheiro_de_prompt_user.pdf</code>) generated
-              from the email in the URL.{" "}
-              <code>trustProxies(at: &lsquo;*&rsquo;)</code> in{" "}
-              <code>bootstrap/app.php</code> ensures Laravel reads{" "}
-              <code>X-Forwarded-*</code> behind a proxy or load balancer and
-              generates URLs with the correct host.
+              Result: zero state to manage, native expiration, and a
+              personalized filename generated from the email embedded in the URL.
             </p>
           </>
         ),
@@ -215,12 +190,14 @@ const content: ProjectContentFactory = (locale) => {
         body: (
           <>
             <p>
+              Documenting the API in OpenAPI with{" "}
               <code>darkaonline/l5-swagger</code> requires{" "}
-              <code>#[OA\Post(...)]</code>,{" "}
-              <code>#[OA\Property(...)]</code> attributes on every endpoint.
-              The info already lives in <code>routes/api.php</code>, the
-              FormRequest and the return type — duplicating in attributes added
-              ~250 lines of boilerplate to controllers.
+              <code>#[OA\Post(...)]</code> and{" "}
+              <code>#[OA\Property(...)]</code> attributes on every endpoint. That
+              information already lives in <code>routes/api.php</code>, the
+              FormRequest and the return type — repeating it all in attributes
+              would duplicate the same definition in several places and make the
+              docs easy to fall out of sync.
             </p>
             <p>
               <code>dedoc/scramble</code> reads routes, FormRequests and return
