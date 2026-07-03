@@ -229,47 +229,6 @@ const content: ProjectContentFactory = (locale) => {
           </>
         ),
       },
-      {
-        title: "Front · Payment endpoint scalable via array of IDs",
-        body: (
-          <>
-            <p>
-              The original endpoint was{" "}
-              <code>GET /payment/create/preference</code> for a single ebook.
-              With the cart, it migrated to <code>POST</code> accepting{" "}
-              <code>{`{ ebook_ids: [1, 3, 7] }`}</code>. The back-end builds
-              the Mercado Pago <code>items[]</code> array dynamically, and the
-              approval webhook iterates the IDs to associate every purchased
-              ebook to the user in one transaction.
-            </p>
-            <p>
-              The product page also sends the array (with a single ID) — same
-              endpoint, same serialization, same webhook for direct purchase
-              and cart.
-            </p>
-          </>
-        ),
-      },
-      {
-        title: "Front · Multi-stage Docker + Nginx serving the SPA",
-        body: (
-          <>
-            <p>
-              Multi-stage Dockerfile: <code>node:20-alpine</code> compiles the
-              bundle, <code>nginx:alpine</code> serves <code>dist/</code>.
-              Final image ~50 MB.
-            </p>
-            <p>
-              The <code>nginx.conf</code> configures{" "}
-              <code>try_files $uri $uri/ /index.html</code> for deep-linking
-              (without it, <code>/profile</code> returns 404 on refresh),{" "}
-              <code>Cache-Control immutable</code> on Vite-versioned assets,
-              and <code>no-cache</code> on <code>index.html</code> so deploys
-              reflect on the next request without manual invalidation.
-            </p>
-          </>
-        ),
-      },
     ],
   };
 };
