@@ -87,20 +87,6 @@ const content: ProjectContentFactory = (locale) => {
           ),
         },
         {
-          title: "Infra · AWS S3 desacoplado da API",
-          body: (
-            <>
-              <p>
-                Todo media (avatar, imagem de comunidade, imagem/vídeo de post)
-                sobe para bucket S3 dedicado. API retorna só o{" "}
-                <code>filePath</code> relativo; front monta a URL completa.
-                Upload usa <code>FormData</code> com dois parts: JSON de
-                metadados + arquivo binário (<code>multipart/form-data</code>).
-              </p>
-            </>
-          ),
-        },
-        {
           title: "Front · Paginação server-side para posts, client-side para comentários",
           body: (
             <>
@@ -197,20 +183,6 @@ const content: ProjectContentFactory = (locale) => {
               token is decoded with <code>jwt-decode</code> to check expiration
               without a server roundtrip. Auth state propagated via props where
               needed.
-            </p>
-          </>
-        ),
-      },
-      {
-        title: "Infra · AWS S3 decoupled from the API",
-        body: (
-          <>
-            <p>
-              All media (avatar, community image, post image/video) goes to a
-              dedicated S3 bucket. API returns only the relative{" "}
-              <code>filePath</code>; front builds the full URL. Upload uses{" "}
-              <code>FormData</code> with two parts: JSON metadata + binary file
-              (<code>multipart/form-data</code>).
             </p>
           </>
         ),
