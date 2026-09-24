@@ -17,7 +17,7 @@ export default async function Image({
   const { locale } = await params;
   const pt = isLocale(locale) && locale === "pt";
   const role = pt ? "Desenvolvedor Full-stack" : "Full-stack Developer";
-  const stack = "Java · Spring Boot · Node · TypeScript · Next.js · PHP";
+  const stack = "Java · Spring Boot · Node · TypeScript · Next.js";
 
   return new ImageResponse(
     (
