@@ -160,8 +160,8 @@ export const projects: Project[] = [
     role: { pt: "Full-stack", en: "Full-stack" },
     year: 2026,
     demo: "https://reservvo.cloud",
-    readme: "https://gist.github.com/odgiedev/62b06263673797a18a28835b4801c67b",
-    readmeApi: "https://gist.github.com/odgiedev/e6e1158892b3b1810d8a3a967ba19ac7",
+    github: "https://github.com/odgiedev/reservvo",
+    githubApi: "https://github.com/odgiedev/reservvo-api",
     media: {
       type: "video",
       src: "/projects/reservvo/hero.mp4",
