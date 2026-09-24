@@ -6,8 +6,10 @@ import hackernewsPlus from "./hackernews-plus";
 import neosrate from "./neosrate";
 import linkiess from "./linkiess";
 import cryptoProfit from "./crypto-profit";
+import balduRaridades from "./baldu-raridades";
 
 export const projectContent: Record<string, ProjectContentFactory> = {
+  "baldu-raridades": balduRaridades,
   trackrr,
   byro,
   reservvo,

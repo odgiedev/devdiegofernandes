@@ -2,6 +2,55 @@ import type { Project } from "./types";
 
 export const projects: Project[] = [
   {
+    slug: "baldu-raridades",
+    title: "Baldu Raridades",
+    highlights: ["Next.js 16", "Sanity CMS", "Asaas", "Melhor Envio", "Tailwind v4", "Zustand"],
+    tagline: {
+      pt: "E-commerce de bonés e streetwear — Next.js + Sanity CMS, com pagamentos Asaas (PIX/Cartão) e frete via Melhor Envio.",
+      en: "Cap and streetwear e-commerce — Next.js + Sanity CMS, with Asaas payments (PIX/Card) and Melhor Envio shipping.",
+    },
+    stack: [
+      {
+        label: { pt: "Front-end", en: "Front-end" },
+        items: [
+          "Next.js 16",
+          "React 19",
+          "TypeScript",
+          "Tailwind v4",
+          "Zustand",
+          "React Compiler",
+        ],
+      },
+      {
+        label: { pt: "CMS", en: "CMS" },
+        items: [
+          "Sanity Studio v5",
+          "next-sanity",
+          "GROQ",
+          "Webhooks",
+        ],
+      },
+      {
+        label: { pt: "Pagamentos & Frete", en: "Payments & Shipping" },
+        items: ["Asaas (PIX/Cartão)", "Webhook Asaas", "Melhor Envio"],
+      },
+    ],
+    role: { pt: "Full-stack", en: "Full-stack" },
+    year: 2026,
+    demo: "https://balduraridades.com.br/",
+    media: {
+      type: "video",
+      src: "/projects/baldu-raridades/hero.mp4",
+      alt: {
+        pt: "Demonstração do Baldu Raridades",
+        en: "Baldu Raridades demonstration",
+      }
+    },
+    featured: true,
+    order: 0,
+    
+  },
+  {
     slug: "trackrr",
     title: "Trackrr",
     highlights: ["Express 5", "Next.js 16", "PostgreSQL", "Prisma", "JWT", "Vitest"],
