@@ -31,12 +31,12 @@ export function FeaturedProjects({
       ) : (
         <ul className="mt-8 grid gap-4 sm:grid-cols-2">
           {projects.map((p) => (
-            <li key={p.slug} className="h-full">
+            <li key={p.slug} className="relative h-full">
               <Link
                 href={`${base}/projects/${p.slug}`}
                 className="flex h-full flex-col rounded-lg border border-border p-5 hover:border-fg/40 transition-colors"
               >
-                <h3 className="font-medium">{p.title}</h3>
+                <h3 className="font-medium pr-20">{p.title}</h3>
                 <p className="mt-1 line-clamp-2 text-sm text-muted">
                   {p.tagline[locale]}
                 </p>
@@ -51,6 +51,21 @@ export function FeaturedProjects({
                   ))}
                 </ul>
               </Link>
+              {p.demo && (
+                <a
+                  href={p.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${p.title} — ${dict.projects.demo}`}
+                  className="absolute right-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:border-emerald-500/70 transition-colors"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                  </span>
+                  {dict.projects.live}
+                </a>
+              )}
             </li>
           ))}
         </ul>

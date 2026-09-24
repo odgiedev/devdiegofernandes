@@ -1,6 +1,6 @@
 {
   "meta": {
-    "description": "Diego Fernandes' portfolio — full-stack developer (Java/Spring, Node/TypeScript, PHP/Laravel, Next.js) with projects in production."
+    "description": "Diego Fernandes' portfolio — full-stack developer (Java/Spring, Node/TypeScript, Next.js) with projects in production."
   },
   "nav": {
     "projects": "Projects",
@@ -8,7 +8,7 @@
   },
   "hero": {
     "name": "Diego Fernandes",
-    "tagline": "Full-stack dev. Back-end Java/Spring, Node/TS, PHP/Laravel. front React/Next.js.",
+    "tagline": "Full-stack dev. Back-end Java/Spring, Node/TS. front React/Next.js.",
     "viewProjects": "View projects",
     "cta": "Get in touch"
   },
@@ -41,6 +41,7 @@
     "readmeFront": "README · Front",
     "readmeApi": "README · API",
     "demo": "Visit site",
+    "live": "Live",
     "contextTitle": "Context",
     "decisionsTitle": "Technical decisions",
     "dockerTitle": "Run locally",
@@ -51,27 +52,27 @@
   },
   "about": {
     "title": "About",
-    "intro": "Full-stack developer focused on back-end. Coding since 2020, currently in the final semester of a Computer Science degree. I work with APIs in Java/Spring Boot, Node/TypeScript and PHP and interfaces in React/Next.js, prioritizing architecture, performance, and good practices. My projects run in production — containerized APIs on a VPS, fronts on Vercel, with their own deploy, database, and domain.",
+    "intro": "Full-stack developer focused on back-end. Coding since 2020, currently in the final semester of a Computer Science degree. I work with APIs in Java/Spring Boot, Node/TypeScript and interfaces in React/Next.js, prioritizing architecture, performance, and good practices. My projects run in production — containerized APIs on a VPS, fronts on Vercel, with their own deploy, database, and domain.",
     "factsTitle": "At a glance",
     "facts": [
       { "label": "Education", "value": "Computer Science — Cruzeiro do Sul Virtual (final semester, graduating in 2026)" },
-      { "label": "Location", "value": "São José do Rio Preto, Brazil" },
+      { "label": "Location", "value": "Brazil - SP" },
       { "label": "Availability", "value": "Remote, hybrid or on-site · open to relocation" },
       { "label": "English", "value": "Advanced" }
     ],
     "stackTitle": "Current stack",
     "stack": [
-      "Back-end: Java + Spring Boot, Node.js + TypeScript, PHP + Laravel",
+      "Back-end: Java + Spring Boot, Node.js + TypeScript",
       "Front-end: Next.js, React, Tailwind",
       "Database: PostgreSQL, MySQL, MongoDB",
-      "Testing: JUnit + Mockito (Spring), Vitest + Supertest (Node), Pest (Laravel) — unit and integration",
+      "Testing: JUnit + Mockito (Spring), Vitest + Supertest (Node) — unit and integration",
       "Infra: AWS, VPS (Hetzner), Linux, Docker, Vercel"
     ],
     "interestsTitle": "What I'm studying",
     "interests": [
-      "Database optimization — indexes and query analysis",
+      "Secure coding practices and protection against web vulnerabilities",
       "CI/CD with GitHub Actions",
-      "Clean architecture, DDD and SOLID",
+      "Clean architecture, DDD and TDD",
       "GraphQL as an alternative to REST"
     ],
     "ctaTitle": "Get in touch"

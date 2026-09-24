@@ -33,7 +33,7 @@ export default async function ProjectsPage({
           {projects.map((p) => {
             const tags = cardTags(p);
             return (
-              <li key={p.slug} className="h-full">
+              <li key={p.slug} className="relative h-full">
                 <Link
                   href={`${base}/projects/${p.slug}`}
                   className="group flex h-full flex-col overflow-hidden rounded-lg border border-border hover:border-fg/40 transition-colors"
@@ -67,6 +67,21 @@ export default async function ProjectsPage({
                     </p>
                   </div>
                 </Link>
+                {p.demo && (
+                  <a
+                    href={p.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${p.title} — ${dict.projects.demo}`}
+                    className="absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-bg/80 px-2.5 py-1 text-xs font-medium text-fg backdrop-blur border border-border hover:border-fg/40 transition-colors"
+                  >
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                    </span>
+                    {dict.projects.live}
+                  </a>
+                )}
               </li>
             );
           })}
